@@ -1,0 +1,324 @@
+
+<?php
+require('db_access.php');
+?>
+
+
+<?php
+
+
+//*******************************************************************Video Browsering Visual Elements*****************************************//
+function GetVideoElem($video_info)
+{
+	$video_xref = $video_info["xref"];
+	$video_desc = $video_info["vname"];
+	$items = explode('\\',$video_xref);
+	$items_ct = count($items);
+        $video_path = $_SESSION["web_video_basepath"] ."/".$items[$items_ct-3] ."/". $items[$items_ct-2]."/". $items[$items_ct-1];
+	echo "<div class=\"video\">\n";
+	//echo "<video id='vidvid' controls>\n";
+        //echo "<source src=\"".$video_path."\" type=\"video/mp4\">\n";
+        //echo "</video>\n";
+	echo "<a href=\"".$video_path."\" id=\"player\" style=\"display:block;width:320px;height:220px\" ></a>";
+	echo "<script>\n";
+	echo "flowplayer(\"player\", \"flowplayer-3.2.16.swf\")";
+	echo "</script>\n";
+	//echo "<div id=\"vid_desc\">$video_desc</div>\n";
+	echo "<div id=\"vid_desc\"></div>\n";
+        echo "</div>\n";
+}
+
+function GetThumbnailElem($thumb_info,$query_matching_info)
+{
+	$thumb_path = $thumb_info["path"];
+	$qry_match_str = GetQueryMatchingTooltip($query_matching_info);
+	echo "<div class=\"thumb\">\n";
+	echo "  <a target=\"_blank\" href=\"video_page.php?vid=".$thumb_info["vid"]."\"><img title=\"".$qry_match_str."\" src=\"$thumb_path\"></a>\n";
+	foreach($_SESSION["img_fields"] as $img_field => $title )
+        {
+                if(isset($thumb_info[$img_field]) && $thumb_info[$img_field] != "")
+                        echo "  <div class=\"desc\">".$title.":".$thumb_info[$img_field]."</div>\n";
+        }
+	echo "</div>\n";
+}
+
+function GetShotElem($shot_info)
+{
+	$shot_path = $shot_info["path"];
+        $shot_vname = $shot_info["vname"];
+	$shot_timestamp = $shot_info["timestamp"];
+	$sec = Time2Sec($shot_timestamp);
+        echo "<div class=\"shot\">\n";
+        echo "  <a href=\"javascript:JumpToTime($sec);\"><img src=\"$shot_path\"></a>\n";
+	foreach($_SESSION["img_fields"] as $img_field => $title )
+	{
+		if(isset($shot_info[$img_field]) && $shot_info[$img_field] != "")
+	        	echo "  <div class=\"desc\">".$title.":".$shot_info[$img_field]."</div>\n";
+	}
+        echo "</div>\n";
+}
+
+
+function GetThumbnailElemPage($thumb_infos,$video_infos)
+{
+	echo "<div class=\"thumb_list\">\n";
+	foreach($thumb_infos as $thumb_info)
+	{
+		$query_matching_info = $video_infos[$thumb_info["vid"]];
+		GetThumbnailElem($thumb_info,$query_matching_info);
+	}
+	echo "</div>\n";
+}
+
+
+function GetShotElemPage($shot_infos)
+{	
+        $shot_ct = count($shot_infos);
+        echo "<div class=\"thumb_list\">\n";
+        foreach($shot_infos as $shot_info)
+        {
+		GetShotElem($shot_info);
+        }
+        echo "</div>\n";
+}
+
+function PresentSingleVideo($video_id)
+{
+	$video_info = $_SESSION["video_info_map"][$video_id];
+	GetVideoElem($video_info);
+}
+function PresentMultiVideoThumbs($video_infos)
+{
+	$video_ids = Array();
+	$acc = 0;
+	foreach($video_infos as $video_id=>$video_info)
+		$video_ids[$acc++] = $video_id;
+	$thumb_infos = FetchVideoThumbnails($video_ids);
+	GetThumbnailElemPage($thumb_infos,$video_infos);
+}
+function PresentSINShotsByShotIds($shot_infos)
+{
+        $sin_shot_infos = FetchSINShotsByShotIds($shot_infos);
+        GetThumbnailElemPage($sin_shot_infos);
+}
+
+function PresentSingleVideoShots($video_id)
+{
+	$shot_infos = FetchVideoShots($video_id);
+        GetShotElemPage($shot_infos);
+}
+
+function PresentVideoShotsWithConcept($video_id,$sname)
+{
+	$shot_infos = FetchVideoShotsWithConcept($video_id,$sname);
+        GetShotElemPage($shot_infos);
+}
+
+function PresentVideoASR($video_id)
+{
+	$asr_transcript = FetchVideoTranscript($video_id);
+	echo "<p>".$asr_transcript."</p>\n";
+}
+
+function PresentVideoSINClound($video_id)
+{
+	$sin_weight_map = FecthSingleVideoSINWeightMap($video_id);
+	$tot_weight = 0;
+	$font_max_sz = 40;
+	$max_tag_ct = 20;
+	foreach($sin_weight_map as $sname => $conf)
+	{
+		$tot_weight += $conf;
+	}
+	$tag_ct = 0;
+	foreach($sin_weight_map as $sname => $conf)
+        {
+		$tf = sqrt($conf / $tot_weight);
+		$idf = -log(pow($_SESSION["sin_name_totsc_map"][$sname],2));
+		$font_sz = intval($tf*$idf*$font_max_sz);
+		if($font_sz != 0)
+			echo "<li><a target='shot_page' href=\"shot_page.php?vid=".$video_id."&sname=".$sname."\" data-weight=\"".$font_sz."\" >".$sname."</a></li>\n";
+		if(++$tag_ct > $max_tag_ct)
+			break;
+        }
+
+}
+
+function PresentVideoMetaInfo($video_id)
+{
+	$meta_info = $_SESSION["video_info_map"][$video_id];
+	echo "<p>Name: ".$meta_info["vname"]."</p>";
+	echo "<p>Length: ".MSec2Time(intval($meta_info["length"]))."</p>";
+	echo "<p>Size: ".$meta_info["w"]." x ".$meta_info["h"]."</p>";
+	echo "<p>FPS: ".$meta_info["fps"]."</p>";
+	echo "<p>Processed features:</p>";
+	echo "<p><a href='#'>MOSIFT</a>,<a href='#'>STIP</a>,<a href='#'>SIFT</a>,<a href='#'>CSIFT</a>,<a href='#'>TRAJ</a>,<a href='#'>TCH</a>,<a href='#'>MFCC</a>,<a href='#'>SIN</a>,<a href='#'>OCR</a>,<a href='#'>OBJBNK</a></p>";
+}
+
+function PresentDatasetHierarchyByCategory($category_name)
+{
+	if($category_name == "SIN")
+	{
+		echo "<ul>\n";
+		$sin_info_map = $_SESSION["sin_info_map"];
+		foreach($sin_info_map as $sin_type => $sin_group)
+                {
+                        echo "<li>".$sin_type."\n";
+                        echo "<ul>\n";
+                        foreach($sin_group as $sin_name => $shot_list)
+                        {
+                                echo "<li>"."<a target=\"thumb_page\" href=\"thumb_page.php?search_type=SIN&sin_type=".$sin_type."&sin_name=".$sin_name."\">".$sin_name."</a></li>\n";
+                        }
+                        echo "</ul>\n</li>\n";
+                }	
+		echo "</ul>\n";
+	}
+	elseif($category_name =="Events")
+	{
+		$event_info_map = $_SESSION["event_info_map"];
+		$video_info_map = $_SESSION["video_info_map"];
+		
+		foreach($event_info_map as $collection_name => $video_ids)
+		{
+			//echo "<li>"."<a target=\"thumb_page\" href=\"thumb_page.php?search_type=Events&cname=".$collection_name."\">".$collection_name."</a>\n";
+			//echo "<ul>\n";
+			//foreach($video_ids as $video_id)
+			//{
+			//	$video_info = $video_info_map[$video_id];
+			//	$video_name = $video_info["vname"];
+			//	echo "<li>"."<a target=\"_blank\" href=\"video_page.php?vid=".$video_id."\">". $video_name. "</a></li>\n";
+			//}
+			//echo "</ul>\n
+			echo "<li class=\"ui-widget-content\">".$collection_name."</li>\n";
+		}
+	}
+}
+
+
+//**************************************************************Triage Visual Elems****************************************************//
+function GetShotPaths($video_name, $max_ct)
+{
+	$shot_filepaths = glob("MER/keyframes/E022/".$video_name."/*.jpg");
+	$shot_ct = count($shot_filepaths);
+	if($shot_ct<=$max_ct)
+		return $shot_filepaths;
+	else
+	{
+		$smp_shot_filepaths = array();
+		$step = floor($shot_ct * 1.0 / $max_ct);
+		$acc_id = 0;
+		while($max_ct-- > 0)
+		{
+			$acc_id += $step;
+			$sel_id = floor(intval($acc_id));
+			array_push($smp_shot_filepaths, $shot_filepaths[$sel_id]);
+		}
+		return $smp_shot_filepaths;
+	}
+}
+
+function LoadMERItemInfo($mer_filepath)
+{
+	$mer_info = array();
+	$mer = simplexml_load_file($mer_filepath);
+	$clip_id = $mer["clipID"];
+	$terms = explode('_',$clip_id);
+	$video_name = $terms[0];
+	$mer_info["vname"] = $video_name;
+	$mer_info["evid"] = array();
+	$desc_set = array();
+	foreach ($mer->evidence->observation as $observation) 
+	{
+		$obs_info = array();
+		$type = '';
+		switch((string) $observation['type']) 
+	   	{
+			case 'scene':
+			case 'action':
+			case 'person_s':
+			case 'object_s':
+				$type = 'saw';
+		        	break;
+			case 'linguistic_audio':
+		        	$type = 'heard';
+	        		break;
+	    	}
+		if($type == '')
+			continue;
+		$desc = $observation['description'];
+		$desc = trim(preg_replace('/\s*\([^)]*\)/', '', $desc));
+		if(!isset($desc_set[$desc]))
+		{
+			$desc_set[$desc]=1;
+		}
+		else
+			continue;
+		$obs_info["desc"] = $desc;
+		$obs_info["conf"] = floatval($observation['confidence']);
+		$obs_info["imp"] = floatval($observation['importance']);
+		if(!isset($mer_info['evid'][$type]))
+			$mer_info['evid'][$type] = array();
+		array_push($mer_info['evid'][$type], $obs_info);
+	}
+	return $mer_info;
+}
+
+
+function LoadTriageItems($triage_items_folderpath)
+{
+	$item_id = 0;
+	foreach (glob($triage_items_folderpath."/*.xml") as $filepath) 
+	{
+		echo "<div class='triage_item' id='triage_item-".$item_id."'>\n";
+		
+		echo "<div class='item_sels' >";
+		//echo "<div style='margin-left:2px; margin-right:2px; margin-bottom:4px; margin-top:4px;word-wrap: break-word;font-size:14px;'>Cleaning an appliance?</div>";
+		echo "<div>";
+		echo "<input name='sels-".$item_id."' type='radio' id='yes_btn' checked='Checked' /><label>Yes</label>";
+		echo "</div>";
+		echo "<div>";
+		echo "<input name='sels-".$item_id."' type='radio' id='no_btn' /><label>No</label>";
+		echo "</div>";
+		echo "<div>";
+		echo "<input name='sels-".$item_id."' type='radio' id='maybe_btn' /><label>Maybe</label>";
+		echo "</div>";
+		echo "</div>";
+		$mer_info = LoadMERItemInfo($filepath);	
+		$video_name = $mer_info['vname'];
+		$shots_paths = GetShotPaths($video_name, 14);
+	        echo "<div class='item_thumb'>\n";
+		$mid_shot_path = $shots_paths[floor(count($shots_paths)/2)];
+               	echo "<img  id='thumb-".$item_id."' src='".$mid_shot_path."'></img>\n";
+                echo "</div>\n";
+                echo "<div id='shots-".$item_id."' class='item_shots'>\n";
+		foreach($shots_paths as $shot_path)
+		{
+			echo "<img class='triage_item_shot' src='".$shot_path."'></img>\n";
+		}
+		echo "</div>\n";
+		echo "<div class='item_desc'>\n";
+		foreach($mer_info["evid"] as $type=>$obs_infos)
+		{
+			echo "<p> We " . $type. ":";
+			aasort($obs_infos,'conf');
+			$acc = 1;
+			foreach($obs_infos as $obs_info)
+			{
+				$conf = $obs_info["conf"];
+				$desc = $obs_info["desc"];
+				$imp = $obs_info["imp"];
+				$heat_color = toHeatColor(pow($imp,2));
+				echo "(".$acc++.")"."<a class='observe_items' style=\"color:".$heat_color."\">".strtolower($desc)."</font> </a>";
+			}
+			echo "</p>";
+		}
+		echo "</div>";
+		echo "</div>\n";
+		$item_id +=1;
+	}
+}
+
+
+
+
+?>

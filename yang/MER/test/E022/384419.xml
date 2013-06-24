@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mer systemID="CMU_ELamp-MER-System" clipID="HVC384419_flv.mp4" event_name="Cleaning_an_appliance">
+  <evidence>
+    <observation id="xyz000000" type="scene" description="Room (whole video)" confidence="1.0" importance="1.0" />
+    <observation id="xyz000001" type="action" description="Clearing (whole video)" confidence="0.34" importance="0.9" />
+    <observation id="xyz000002" type="scene" description="Kitchen (whole video)" confidence="0.7" importance="0.8" />
+    <observation id="xyz000003" type="person_s" description="Hand (whole video)" confidence="0.93" importance="0.7" />
+    <observation id="xyz000004" type="scene" startTime="01:36" endTime="01:36" description="Room (keyframe anchored at 01:36)" confidence="0.69" importance="1.0" />
+    <observation id="xyz000005" type="person_s" startTime="00:38" endTime="00:38" description="Hand (keyframe anchored at 00:38)" confidence="0.58" importance="0.67" />
+    <observation description="I THINK SO YES (02:54-02:55)" id="xyz000006" type="linguistic_audio" startTime="00:02:54,639" endTime="00:02:55,840" confidence="1.0" importance="1.0" />
+    <observation description="YES (00:52-00:53)" id="xyz000007" type="linguistic_audio" startTime="00:00:52,799" endTime="00:00:53,700" confidence="0.2" importance="0.94" />
+    <observation description="YES (00:53-00:54)" id="xyz000008" type="linguistic_audio" startTime="00:00:53,920" endTime="00:00:54,719" confidence="0.2" importance="0.94" />
+    <observation description="YES (02:05-02:07)" id="xyz000009" type="linguistic_audio" startTime="00:02:05,930" endTime="00:02:07,030" confidence="0.2" importance="0.94" />
+    <observation description="YES (02:11-02:12)" id="xyz0000010" type="linguistic_audio" startTime="00:02:11,849" endTime="00:02:12,469" confidence="0.2" importance="0.94" />
+    <observation id="xyz0000011" type="object_s" description="stove" confidence="0.41" importance="1.0" />
+    <observation id="xyz0000012" type="object_s" description="television" confidence="1.0" importance="0.9" />
+    <observation id="xyz0000013" type="object_s" description="light" confidence="0.02" importance="0.8" />
+    <observation id="xyz0000014" type="object_s" description="electric_refrigerator" confidence="0.99" importance="0.7" />
+    <observation id="xyz0000015" type="object_s" description="room_light" confidence="0.03" importance="0.6" />
+    <observation id="xyz0000016" type="non_linguistic_audio" description="speech (duration 00:40)" confidence="1.0" importance="1.0" />
+    <relationship id="xyz0000017" description="The following visual observations were detected with high confidence in the video, and are relevant to the E022: Cleaning_an_appliance event: " confidence="0.84" importance="0.91">
+      <semantic_inference id="xyz000000" description="Room" />
+      <semantic_inference id="xyz000001" description="Clearing" />
+      <semantic_inference id="xyz000002" description="Kitchen" />
+    </relationship>
+    <relationship id="xyz0000018" description="The following audio observations were detected with high confidence in the video, and are relevant to the E022: Cleaning_an_appliance event: " confidence="0.84" importance="0.98">
+      <semantic_inference id="xyz000006" description="I THINK SO YES " />
+    </relationship>
+  </evidence>
+</mer>

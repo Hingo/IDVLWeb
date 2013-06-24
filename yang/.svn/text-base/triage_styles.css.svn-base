@@ -1,0 +1,141 @@
+.triage_page_container
+{
+  display:block;
+  margin:auto;
+  height:auto;
+  width: 1200px;
+}
+
+.triage_list_content
+{
+display:block;
+float:left;
+width:900px;
+height:auto;
+margin-left:10px;
+margin-top:5px;
+margin-right:10px;
+margin-bottom:5px;
+}
+
+.triage_list_content iframe
+{
+  margin-left:5px;
+  width:890px;
+  height:700px;
+}
+
+
+.leftmenu
+{
+width:250px;
+float:left;
+word-wrap: break-word;
+margin-top:5px;
+border:#000000 1px solid;
+}
+
+.leftmenu p
+{
+  margin-left:10px;
+  text-align:left;
+  font-size:15px;
+  font-weight:bold;
+  font-family: "Times New Roman";
+}
+
+#triage_main_container
+{
+  display:block;
+  margin:auto;
+  height:auto;
+  width: auto;
+}
+
+.triage_item
+{
+  width: 850px;
+  margin:5px;
+  border:#000000 3px solid;
+  padding:2px;
+  height:145px;
+}
+
+.item_sels
+{
+  width:auto;
+  height:auto;
+  float:left;
+  margin-top:40px;
+  border: #000000 1px solid;
+  margin-left:5px;
+  margin-right:5px;
+}
+
+.item_sels div
+{
+  width: 70px;
+  text-align:left;
+}
+
+.item_thumb
+{
+   width:auto;
+   height:135px;
+   margin:2px;
+   border: #000000 1px solid;
+   float:left;
+   margin-top:5px;
+   margin-bottom:5px;
+}
+.item_thumb img
+{
+   width:200px;
+   height:130px;
+   margin:2px;
+}
+
+.item_shots
+{
+   width:200px;
+   height:135px;
+   margin:2px;
+   border: #000000 1px solid;
+   float:left;
+   margin-top:5px;
+   margin-bottom:5px;
+}
+
+.item_shots img
+{
+   width:45px;
+   height:30px;
+   margin:2px;
+   float:left;
+}
+
+.item_desc
+{
+   width:340px;
+   height:135px;
+   max-height:135px;
+   margin-left:2px;
+   float:left;
+   word-wrap: break-word;
+   text-align:left;
+   overflow:auto;
+   border: #000000 1px solid;
+   margin-top:5px;
+   margin-bottom:5px;
+}
+
+.item_desc p
+{
+  margin:5px;
+}
+
+.observe_items
+{
+   margin-left:2px;
+   margin-right:2px;
+}

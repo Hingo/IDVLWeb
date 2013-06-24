@@ -1,0 +1,372 @@
+3_or_more_people
+actor
+adult
+adult_female_human
+adult_male_human
+advocate
+airplane
+airplane_flying
+airplane_landing
+airplane_takeoff
+airport_or_airfield
+amateur_video
+anger
+animal
+animal_pens_and_cages
+animation_cartoon
+apartment_complex
+apartments
+armed_person
+armored_vehicles
+arthropod
+asian_people
+athlete
+attached_body_parts
+baby
+background_static
+bar_pub
+baseball
+basketball
+beach
+beards
+bicycles
+bicycling
+birds
+black_frame
+blank_frame
+boat_ship
+body_parts
+bomber_bombing
+boredom
+boy
+bridge
+building
+bus
+canoe
+car
+car_crash
+car_racing
+cats
+cattle
+cell_phones
+cetacean
+chair
+charts
+child
+church
+cityscape
+classroom
+cloud
+colin_powell
+computer
+conference_room
+construction_site
+construction_worker
+court
+crane_vehicle
+crowd
+cul-de-sac
+daytime_outdoor
+demonstration_or_protest
+dining_room
+dogs
+domesticated_animal
+doorway
+dresses
+driver
+eaters
+election_campaign_address
+emergency_vehicles
+eukaryotic_organism
+event
+exiting_car
+face
+factory
+female_anchor
+female_human_face
+female_person
+field
+fight-physical
+flag
+flood
+flower
+football
+freighter
+furniture
+george_bush
+glasses
+golf_player
+graphic
+greeting
+ground_vehicles
+gun
+hand
+harbor
+helicopter_hovering
+highway
+hispanic_person
+horse
+human_young_adult
+industrial_setting
+infant
+insurgents
+invertebrate
+japanese
+junk_frame
+korean
+landscape
+machine_guns
+male_news_subject
+male_person
+mammal
+man_wearing_a_suit
+military
+military_airplane
+minivan
+moonlight
+mosques
+mountain
+natural-disaster
+oceans
+old_people
+overlaid_text
+people_marching
+person
+pickup_truck
+police_car
+politician
+press_conference
+primate
+prisoner
+processing_plant
+professional_video
+quadruped
+raft
+religious_building
+religious_figures
+rescue_helicopter
+rescue_vehicle
+researcher
+residential_buildings
+rifles
+river
+road
+road_block
+road_overpass
+roadway_junction
+rocky_ground
+room
+rowboat
+ruminant
+running
+sadness
+sailing_ship
+scene_text
+school
+science_technology
+scientists
+sea_mammal
+shopping_mall
+singing
+one_person
+single_person_female
+single_person_male
+sitting_down
+skating
+ski
+skier
+sky
+skyscraper
+soccer
+soccer_player
+sofa
+soldiers
+speaker_at_podium
+speaking
+sports
+sports_car
+standing
+street_battle
+suburban
+suit
+sun
+sunglasses
+sunny
+swimming
+synagogue
+talking
+teenagers
+tennis
+tent
+throw_ball
+throwing
+tower
+tree
+truck
+us_flag
+urban_park
+valleys
+van
+vegetation
+vertebrate
+walking
+weapons
+whale
+window
+speech first test
+noise first test
+water (audio)
+anim_goat (audio)
+power_tool (audio)
+bang (audio)
+knock (audio)
+music_sing (audio)
+silence (audio)
+mumble (audio)
+applause (audio)
+white_noise (audio)
+clap (audio)
+child (audio)
+rustle (audio)
+clatter (audio)
+scratch (audio)
+anim_cat (audio)
+engine_heavy (audio)
+carnivore
+caucasians
+celebrity_entertainment
+cheering
+civilian_person
+clearing
+commercial_advertisement
+conference_buildings
+construction_vehicles
+crustacean
+dancing
+dark-skinned_people
+desert
+disgust
+dolphin
+door_opening
+election_campaign
+election_campaign_greeting
+entertainment
+exiting_a_vehicle
+explosion_fire
+female-human-face-closeup
+female_reporter
+fire_truck
+food
+forest
+free_standing_structures
+girl
+golf
+government-leader
+ground_combat
+guard
+gym
+handshaking
+head_and_shoulder
+herbivore
+hill
+hockey
+house_of_worship
+indian_person
+indoor_sports_venue
+instrumental_musician
+islands
+john_kerry
+kitchen
+laboratory
+leg
+male-human-face-closeup
+male_human_face
+male_reporter
+man_made_thing
+meeting
+military_aircraft
+military_base
+military_vehicle
+motorcycle
+muslims
+network_logo
+nighttime
+office
+officers
+outdoor
+pan_zoom_static
+person_drops_an_object
+police
+police_truck
+politics
+speaking_to_camera
+stadium
+still_image
+streets
+studio_with_anchorperson
+surprise
+swimming_pools
+synthetic_images
+telephones
+text
+text_labeling_people
+traffic
+two_people
+underwater
+urban_scenes
+vehicle
+violent_action
+walking_running
+weather
+wild_animal
+silence first test
+music first test
+human_noise (audio)
+click (audio)
+laugh (audio)
+anim_horse (audio)
+thud (audio)
+speech (audio)
+crowd (audio)
+washboard (audio)
+scream (audio)
+hammer (audio)
+engine_quiet (audio)
+singing (audio)
+micro_blow (audio)
+engine_light (audio)
+squeak (audio)
+animal (audio)
+radio (audio)
+anim_bird (audio)
+whistle (audio)
+tone (audio)
+gun_shot
+helicopters
+indoor
+insect
+joy
+lake
+male_anchor
+map
+military_personnel
+news
+office_building
+plant
+waterscape_waterfront
+speech_ne (audio)
+beep (audio)
+cheer (audio)
+music (audio)
+wind (audio)
+other_creak (audio)
+cigar_boats
+corporate-leader
+dresses_of_women
+female_news_subject
+city
+table
+snow
+anchorperson
+news_studio
+reporter

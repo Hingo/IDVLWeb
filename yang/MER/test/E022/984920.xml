@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mer systemID="CMU_ELamp-MER-System" clipID="HVC984920_flv.mp4" event_name="Cleaning_an_appliance">
+  <evidence>
+    <observation id="xyz000000" type="scene" description="Room (whole video)" confidence="1.0" importance="1.0" />
+    <observation id="xyz000001" type="action" description="Clearing (whole video)" confidence="0.29" importance="0.9" />
+    <observation id="xyz000002" type="scene" description="Kitchen (whole video)" confidence="0.86" importance="0.8" />
+    <observation id="xyz000003" type="person_s" description="Hand (whole video)" confidence="0.75" importance="0.7" />
+    <observation id="xyz000004" type="scene" startTime="05:20" endTime="05:20" description="Room (keyframe anchored at 05:20)" confidence="0.68" importance="1.0" />
+    <observation id="xyz000005" type="scene" startTime="07:00" endTime="07:00" description="Kitchen (keyframe anchored at 07:00)" confidence="0.84" importance="0.78" />
+    <observation id="xyz000006" type="person_s" startTime="04:07" endTime="04:07" description="Hand (keyframe anchored at 04:07)" confidence="0.51" importance="0.67" />
+    <observation description="AND THE PLATFORMS BEING PUT ON (07:10-07:12)" id="xyz000007" type="linguistic_audio" startTime="00:07:10,389" endTime="00:07:12,180" confidence="0.81" importance="1.0" />
+    <observation description="PLATFORM AND THE JEWISH MODEL (06:53-06:55)" id="xyz000008" type="linguistic_audio" startTime="00:06:53,269" endTime="00:06:55,470" confidence="0.71" importance="0.93" />
+    <observation description="PEOPLE IF PEOPLE COULD NOT AT THE POLICEMAN (06:22-06:24)" id="xyz000009" type="linguistic_audio" startTime="00:06:22,699" endTime="00:06:24,649" confidence="0.59" importance="0.9" />
+    <observation description="CERTAIN PEOPLE (06:10-06:12)" id="xyz0000010" type="linguistic_audio" startTime="00:06:10,569" endTime="00:06:12,110" confidence="1.0" importance="0.81" />
+    <observation description="WELL TECHNICAL DIFFICULTIES WITH MACHINE (02:12-02:15)" id="xyz0000011" type="linguistic_audio" startTime="00:02:12,889" endTime="00:02:15,080" confidence="0.96" importance="0.75" />
+    <observation id="xyz0000012" type="object_s" description="stove" confidence="0.39" importance="1.0" />
+    <observation id="xyz0000013" type="object_s" description="television" confidence="1.0" importance="0.9" />
+    <observation id="xyz0000014" type="object_s" description="light" confidence="0.02" importance="0.8" />
+    <observation id="xyz0000015" type="object_s" description="electric_refrigerator" confidence="0.99" importance="0.7" />
+    <observation id="xyz0000016" type="object_s" description="room_light" confidence="0.03" importance="0.6" />
+    <observation id="xyz0000017" type="non_linguistic_audio" description="speech (duration 01:08)" confidence="1.0" importance="1.0" />
+    <observation id="xyz0000018" type="non_linguistic_audio" description="water (duration 00:26)" confidence="0.39" importance="0.25" />
+    <relationship id="xyz0000019" description="The following visual observations were detected with high confidence in the video, and are relevant to the E022: Cleaning_an_appliance event: " confidence="0.87" importance="0.91">
+      <semantic_inference id="xyz000000" description="Room" />
+      <semantic_inference id="xyz000001" description="Clearing" />
+      <semantic_inference id="xyz000002" description="Kitchen" />
+    </relationship>
+    <relationship id="xyz0000020" description="The following audio observations were detected with high confidence in the video, and are relevant to the E022: Cleaning_an_appliance event: " confidence="0.81" importance="0.99">
+      <semantic_inference id="xyz000007" description="AND THE PLATFORMS BEING PUT ON " />
+      <semantic_inference id="xyz000008" description="PLATFORM AND THE JEWISH MODEL " />
+      <semantic_inference id="xyz000009" description="PEOPLE IF PEOPLE COULD NOT AT THE POLICEMAN " />
+    </relationship>
+  </evidence>
+</mer>

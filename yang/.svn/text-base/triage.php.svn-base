@@ -1,0 +1,30 @@
+<?php
+require('vis_elems.php');
+?>
+
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="triage_styles.css">
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>  
+		<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>  
+		<script src="triage_styles.css"></script>
+	</head>
+	<body>
+		<div class="triage_page_container">
+			<div class="leftmenu">
+				<div><p>Target Event:</p></div>
+				<div align="center">
+                                        <a href="#">Cleaning an appliance</a>
+                                </div>
+				<div><p>Event Description:</p></div>
+			</div>
+			
+			
+			<div class="triage_list_content">
+				<iframe name="triage_list" src="triage_list.php" frameborder="1"></iframe>
+			</div>
+		</div>
+	</body>
+</html>

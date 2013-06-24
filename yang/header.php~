@@ -1,0 +1,47 @@
+<?php
+function connectDB(){
+	if ($c = oci_connect('INCEVAL', 'INCEVAL32', 'mmdb.inf.cs.cmu.edu/mmdb')) {
+		//echo 'Successfully connected to Oracle.<br/>';
+	} else {
+		$err = oci_error();
+		die('Oracle Connect Error ' . $err['message']);
+	}
+	return $c;
+}
+
+function readImageFromPredictionInfo($c, $p_id, $box, $no_box, $labelset_name){
+	$query = 'select box_image from predictioninfo where p_id = ' . $p_id;
+	$s = oci_parse ($c, $query);
+	oci_execute($s);
+	$arr = oci_fetch_array($s, OCI_ASSOC);
+
+	if (!isset($arr['BOX_IMAGE'])){
+		getEvalImages($p_id, $labelset_name);
+		readImageFromPredictionInfo($c, $p_id, $box, $no_box, $labelset_name);
+		return;
+	}
+
+	if (is_object($arr['BOX_IMAGE'])) { // protect against a NULL LOB
+		$data = $arr['BOX_IMAGE']->load();
+		$arr['BOX_IMAGE']->free();
+		$fp = fopen($box, "w");
+		fwrite($fp, $data);
+		fclose($fp);
+	}
+	oci_free_statement($s);
+
+	$query = 'select no_box_image from predictioninfo where p_id = ' . $p_id;
+	$s = oci_parse ($c, $query);
+	oci_execute($s);
+	$arr = oci_fetch_array($s, OCI_ASSOC);
+	if (is_object($arr['NO_BOX_IMAGE'])) { // protect against a NULL LOB
+		$data = $arr['NO_BOX_IMAGE']->load();
+		$arr['NO_BOX_IMAGE']->free();
+		$fp = fopen($no_box, "w");
+		fwrite($fp, $data);
+		fclose($fp);
+	}
+	oci_free_statement($s);
+	oci_commit($c);
+}
+

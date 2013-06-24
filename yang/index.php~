@@ -1,0 +1,35 @@
+<?php
+
+require('header.php');
+
+?>
+
+<html>
+	<body>
+		<video width="720" height="480" controls>
+		<source src="http://mmdb.inf.cs.cmu.edu:10590/video/DEV/HVC141137.mp4" type="video/mp4">
+		</video>
+<?php
+	$c = connectDB();
+	$query = "select S.image as IMAGE from movie M, shotbreak S where M.movie_name = 'HVC141137' AND M.movie_id = S.movie_id";
+	$s = oci_parse ($c, $query);
+	oci_execute($s);
+	$acc = 0;
+	while (($row = oci_fetch_array($s, OCI_ASSOC))) {
+		if (is_object($row['IMAGE'])) { // protect against a NULL LOB
+			$data = $row['IMAGE']->load();
+			$row['IMAGE']->free();
+			$name = "tmp/img" . $acc . ".jpg";
+			$fp = fopen($name, "w");
+			fwrite($fp, $data);
+			fclose($fp);
+			$acc++;
+			echo '<img src="' . $name . '"/>';
+		}
+	}
+	oci_free_statement($s);
+	oci_commit($c);
+
+?>
+	</body>
+</html>

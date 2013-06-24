@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mer systemID="CMU_ELamp-MER-System" clipID="HVC229335_flv.mp4" event_name="Cleaning_an_appliance">
+  <evidence>
+    <observation id="xyz000000" type="scene" description="Room (whole video)" confidence="0.97" importance="1.0" />
+    <observation id="xyz000001" type="action" description="Clearing (whole video)" confidence="0.52" importance="0.9" />
+    <observation id="xyz000002" type="scene" description="Kitchen (whole video)" confidence="1.0" importance="0.8" />
+    <observation id="xyz000003" type="person_s" description="Hand (whole video)" confidence="0.72" importance="0.7" />
+    <observation id="xyz000004" type="scene" startTime="00:55" endTime="00:55" description="Room (keyframe anchored at 00:55)" confidence="0.45" importance="1.0" />
+    <observation id="xyz000005" type="scene" startTime="00:47" endTime="00:47" description="Kitchen (keyframe anchored at 00:47)" confidence="0.61" importance="0.78" />
+    <observation description="DOCTOR ARE YOU FAMILIAR SEEMED ALMOST MUZZLE (01:11-01:14)" id="xyz000006" type="linguistic_audio" startTime="00:01:11,680" endTime="00:01:14,480" confidence="1.0" importance="1.0" />
+    <observation description="YEAH ABSOLUTELY AND IT'S NOT IN THE OLD NEITHER DOLE WITH A GUN TO LISTENED A LOT EITHER YOU'LL (01:52-01:59)" id="xyz000007" type="linguistic_audio" startTime="00:01:52,000" endTime="00:01:59,469" confidence="0.43" importance="0.82" />
+    <observation description="COURT IS OFTEN QUITE DIFFERENT (00:01-00:03)" id="xyz000008" type="linguistic_audio" startTime="00:00:01,409" endTime="00:00:03,379" confidence="0.51" importance="0.7" />
+    <observation description="YEAH YEAH ABSOLUTELY I DON'T USE THE SIDE OF THE (00:08-00:11)" id="xyz000009" type="linguistic_audio" startTime="00:00:08,240" endTime="00:00:11,119" confidence="0.63" importance="0.67" />
+    <observation description="YOU KNOW LEON INSTEAD (00:15-00:16)" id="xyz0000010" type="linguistic_audio" startTime="00:00:15,150" endTime="00:00:16,530" confidence="0.24" importance="0.65" />
+    <observation id="xyz0000011" type="object_s" description="stove" confidence="0.4" importance="1.0" />
+    <observation id="xyz0000012" type="object_s" description="television" confidence="1.0" importance="0.9" />
+    <observation id="xyz0000013" type="object_s" description="light" confidence="0.02" importance="0.8" />
+    <observation id="xyz0000014" type="object_s" description="electric_refrigerator" confidence="0.97" importance="0.7" />
+    <observation id="xyz0000015" type="object_s" description="room_light" confidence="0.03" importance="0.6" />
+    <observation id="xyz0000016" type="non_linguistic_audio" description="speech (duration 00:27)" confidence="1.0" importance="1.0" />
+    <observation id="xyz0000017" type="non_linguistic_audio" description="music (duration 00:08)" confidence="0.32" importance="0.09" />
+    <relationship id="xyz0000018" description="The following visual observations were detected with high confidence in the video, and are relevant to the E022: Cleaning_an_appliance event: " confidence="0.82" importance="0.91">
+      <semantic_inference id="xyz000000" description="Room" />
+      <semantic_inference id="xyz000001" description="Clearing" />
+      <semantic_inference id="xyz000002" description="Kitchen" />
+    </relationship>
+    <relationship id="xyz0000019" description="The following audio observations were detected with high confidence in the video, and are relevant to the E022: Cleaning_an_appliance event: " confidence="0.89" importance="0.98">
+      <semantic_inference id="xyz000006" description="DOCTOR ARE YOU FAMILIAR SEEMED ALMOST MUZZLE " />
+      <semantic_inference id="xyz000007" description="YEAH ABSOLUTELY AND IT'S NOT IN THE OLD NEITHER DOLE WITH A GUN TO LISTENED A LOT EITHER YOU'LL " />
+      <semantic_inference id="xyz000008" description="COURT IS OFTEN QUITE DIFFERENT " />
+    </relationship>
+  </evidence>
+</mer>
